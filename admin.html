@@ -1,0 +1,58 @@
+DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Bokningar</title>
+<style>
+body{font-family:Arial;padding:40px}
+table{border-collapse:collapse;width:100%}
+th,td{border:1px solid #ccc;padding:10px;text-align:left}
+th{background:#f4f4f4}
+</style>
+</head>
+
+<body>
+
+<h1>Alla bokningar</h1>
+
+<table>
+<thead>
+<tr>
+<th>Namn</th>
+<th>Email</th>
+<th>Datum</th>
+</tr>
+</thead>
+
+<tbody id="bookingsTable">
+</tbody>
+</table>
+
+<script>
+
+fetch("/bookings")
+.then(response => response.json())
+.then(data => {
+
+const table = document.getElementById("bookingsTable");
+
+data.forEach(booking => {
+
+const row = document.createElement("tr");
+
+row.innerHTML = `
+<td>${booking.name}</td>
+<td>${booking.email}</td>
+<td>${booking.date}</td>
+`;
+
+table.appendChild(row);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
