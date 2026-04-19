@@ -1,57 +1,54 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
-<meta charset="UTF-8">
-<title>Admin - Bokningar</title>
-<style>
-body{font-family:Arial;padding:40px}
-table{border-collapse:collapse;width:100%}
-th,td{border:1px solid #ccc;padding:10px;text-align:left}
-th{background:#f4f4f4}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Bokningar</title>
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<h1>Alla bokningar</h1>
+<header>
+  <h1>Admin - Al-Ghazal Al-Asmar Städservice</h1>
+</header>
 
-<table>
-<thead>
-<tr>
-<th>Namn</th>
-<th>Email</th>
-<th>Datum</th>
-</tr>
-</thead>
+<main>
 
-<tbody id="bookingsTable">
-</tbody>
+<h2>Alla bokningar</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Email</th>
+      <th>Datum</th>
+    </tr>
+  </thead>
+  <tbody id="bookingTable">
+  </tbody>
 </table>
 
+</main>
+
 <script>
-
 fetch("/bookings")
-.then(response => response.json())
-.then(data => {
+  .then(res => res.json())
+  .then(data => {
+    const table = document.getElementById("bookingTable");
 
-const table = document.getElementById("bookingsTable");
-
-data.forEach(booking => {
-
-const row = document.createElement("tr");
-
-row.innerHTML = `
-<td>${booking.name}</td>
-<td>${booking.email}</td>
-<td>${booking.date}</td>
-`;
-
-table.appendChild(row);
-
-});
-
-});
-
+    data.forEach(b => {
+      const row = `
+        <tr>
+          <td>${b.name}</td>
+          <td>${b.email}</td>
+          <td>${b.date}</td>
+        </tr>
+      `;
+      table.innerHTML += row;
+    });
+  });
 </script>
 
 </body>
