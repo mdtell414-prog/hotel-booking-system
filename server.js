@@ -26,9 +26,9 @@ bookings.push(booking);
 
 fs.writeFileSync("bookings.json", JSON.stringify(bookings, null, 2));
 
-console.log("Ny bokning:", booking);
+console.log("Ny bokning:", booking); 
 
-res.send("Tack! Din bokning är mottagen.");
+res.redirect("/success.html");
 
 });
 
