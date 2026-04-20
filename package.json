@@ -1,1 +1,12 @@
-[] 
+{
+  "name": "al-ghazal-stadservice",
+  "version": "1.0.0",
+  "description": "Cleaning service website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+} 
