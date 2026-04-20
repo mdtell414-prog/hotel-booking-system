@@ -8,44 +8,47 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname));
 
-app.post("/boka", (req, res) => {
-
-const name = req.body.name;
-const email = req.body.email;
-const date = req.body.date;
-
-const booking = { name, email, date };
-
-let bookings = [];
-
-if (fs.existsSync("bookings.json")) {
-bookings = JSON.parse(fs.readFileSync("bookings.json"));
+/* تأكد أن الملف موجود */
+if (!fs.existsSync("bookings.json")) {
+  fs.writeFileSync("bookings.json", "[]");
 }
 
-bookings.push(booking);
+/* إضافة حجز */
+app.post("/boka", (req, res) => {
+  const { name, email, date } = req.body;
 
-fs.writeFileSync("bookings.json", JSON.stringify(bookings, null, 2));
+  const booking = { name, email, date };
 
-console.log("Ny bokning:", booking); 
+  let bookings = [];
 
-res.redirect("/success.html");
+  try {
+    bookings = JSON.parse(fs.readFileSync("bookings.json"));
+  } catch {
+    bookings = [];
+  }
 
+  bookings.push(booking);
+
+  fs.writeFileSync("bookings.json", JSON.stringify(bookings, null, 2));
+
+  console.log("Ny bokning:", booking);
+
+  res.redirect("/success.html");
 });
 
+/* جلب الحجوزات */
 app.get("/bookings", (req, res) => {
+  let bookings = [];
 
-const fs = require("fs");
+  try {
+    bookings = JSON.parse(fs.readFileSync("bookings.json"));
+  } catch {
+    bookings = [];
+  }
 
-let bookings = [];
-
-if (fs.existsSync("bookings.json")) {
-bookings = JSON.parse(fs.readFileSync("bookings.json"));
-}
-
-res.json(bookings);
-
+  res.json(bookings);
 });
 
 app.listen(3000, () => {
-console.log("Server running on http://localhost:3000");
+  console.log("Server running on http://localhost:3000");
 });
