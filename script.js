@@ -12,7 +12,7 @@ alert("Tack! Din bokning har skickats.");
 
 if (contactForm) {
 contactForm.addEventListener("submit", function (event) {
-event.preventDefault();
+
 alert("Tack för ditt meddelande! Vi återkommer snart.");
 });
 }
