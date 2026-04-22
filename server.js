@@ -24,6 +24,11 @@ app.post("/boka", (req, res) => {
 
 /* عرض الحجوزات */
 app.get("/bookings", (req, res) => {
+  const bookings = JSON.parse(fs.readFileSync("bookings.json"));
+  res.json(bookings);
+});
+
+app.get("/bookings", (req, res) => {
   res.json(bookings);
 });
 

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="sv"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Al Ghazal Al Asmar</title>
+
+<link rel="stylesheet" href="./Hotel Al Ghazal Al Asmar_files/style.css"></head>
+<body>
+
+<header>
+<h1>Hotel Al Ghazal Al Asmar</h1>
+</header>
+
+<nav>
+<ul>
+<li><a href="http://127.0.0.1:5500/index.html">Hem</a></li>
+<li><a href="http://127.0.0.1:5500/boka.html">Boka</a></li>
+<li><a href="http://127.0.0.1:5500/hitta.html">Hitta</a></li>
+<li><a href="http://127.0.0.1:5500/kontakta.html">Kontakta</a></li>
+</ul>
+</nav>
+
+<main>
+<section>
+<h2>Välkommen</h2>
+<p>Hotel Al Ghazal Al Asmar är ett lyxigt och modernt hotell i Falkenberg.</p>
+<p>Vi erbjuder bekväma rum och en avkopplande miljö nära centrum.</p>
+</section>
+</main>
+
+<footer>
+<p>Storgatan 10, 311 30 Falkenberg</p>
+<p>0346-123456 | info@alghazalhotel.se</p>
+</footer>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
