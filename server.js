@@ -6,10 +6,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
-/* تخزين مؤقت */
 let bookings = [];
 
-/* إضافة حجز */
 app.post("/boka", (req, res) => {
   const { name, email, date } = req.body;
 
@@ -20,12 +18,6 @@ app.post("/boka", (req, res) => {
   console.log("Ny bokning:", booking);
 
   res.redirect("/success.html");
-});
-
-/* عرض الحجوزات */
-app.get("/bookings", (req, res) => {
-  const bookings = JSON.parse(fs.readFileSync("bookings.json"));
-  res.json(bookings);
 });
 
 app.get("/bookings", (req, res) => {
