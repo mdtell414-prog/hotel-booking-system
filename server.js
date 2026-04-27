@@ -17,7 +17,7 @@ app.post("/boka", (req, res) => {
 
   console.log("Ny bokning:", booking);
 
-  res.redirect("Booking mottagen!");
+  res.send("Booking mottagen!");
 });
 
 app.get("/bookings", (req, res) => {
